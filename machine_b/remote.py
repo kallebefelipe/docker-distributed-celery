@@ -10,7 +10,5 @@ app = Celery(
 
 
 @app.task
-def add(x, y):
-    print('machine B')
-    print(x+y)
-    return x + y
+def run_extracao_task(collection, processos):
+    print(processos)
