@@ -13,8 +13,8 @@ def new_connection(collection):
 
 
 def get_process(collection):
-    collection, client = new_connection(collection)
-    return list(collection.find({'encontrado': {'$ne': True}}))
+    collection, _ = new_connection(collection)
+    return list(collection.find({}))
 
 
 def update_process(_id, processo, collection):

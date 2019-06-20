@@ -22,7 +22,17 @@ def read_data(path):
     return data
 
 
+def trat_num(processos):
+    new_process = []
+
+    for pro in processos:
+        new_process.append(pro.get('numero'))
+    return new_process
+
+
 def run_tasks(collection, path, row_id):
     processos = read_data(path)
+    processos = trat_num(processos)
+
     insert(collection, processos)
     run_extracao_task.delay(collection, processos)

@@ -7,6 +7,9 @@ import os
 
 def start_search(modeladmin, request, queryset):
     row = queryset.first()
+    row.status = 'RUNNING'
+    row.save()
+
     path = os.path.join(settings.MEDIA_ROOT, row.processes.name)
     run_tasks(row.collection, path, row.id)
     return path

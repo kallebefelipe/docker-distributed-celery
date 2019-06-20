@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+    celery:
+        build: .
+        command: celery worker -l info -A remote

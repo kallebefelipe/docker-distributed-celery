@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+    webserver_media: {}
+    node-modules:
+
+services:
+    redis:
+        image: "redis:alpine"
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        ports:
+            - 27017:27017
+        expose:
+            - 27017
+        volumes:
+            - ~/mongo-data-distributed:/data/db
+    web:
+        build: .
+        volumes:
+            - webserver_media:/code/media
+        command: bash -c "python /code/manage.py makemigrations --noinput && python /code/manage.py migrate --noinput && python /code/manage.py runserver 0.0.0.0:8000"
+        ports:
+            - "8000:8000"
+        depends_on:
+            - redis
+            - mongodb
+    celery-beat:
+        build: .
+        volumes:
+            - webserver_media:/code/media
+        command: celery -A spiders.celery beat -l info
+        depends_on:
+            - redis
