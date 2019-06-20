@@ -6,9 +6,17 @@ from bots.piaui import ThemisconsultPi
 #     'tasks', backend='amqp',
 #     broker='amqp://<user>:<password>@<ip>/<vhost>')
 
+# app = Celery(
+#     'tasks', backend='amqp',
+#     broker='amqp://172.16.103.250/6379')
+
 app = Celery(
     'tasks', backend='amqp',
     broker='redis://localhost:6379')
+
+# app = Celery(
+#     'tasks', backend='amqp',
+#     broker='redis://redis:6379')
 
 def trat_process(processos):
     for processo in processos:

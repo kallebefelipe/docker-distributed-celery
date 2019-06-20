@@ -1,6 +1,6 @@
 import xlrd
 from remote import run_extracao_task
-from search.steps.insert_process import insert
+from extractions.steps.insert_process import insert
 
 
 def read_data(path):

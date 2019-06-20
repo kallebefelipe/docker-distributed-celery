@@ -1,4 +1,4 @@
-from search.database.connection import new_connection
+from extractions.database.connection import new_connection
 
 
 def insert(nome, processos):
@@ -7,4 +7,4 @@ def insert(nome, processos):
     for processo in processos:
 
         if not db.find_one({'numero': processo}):
-            db.insert_one(processo)
+            db.insert_one({'numero': processo})
