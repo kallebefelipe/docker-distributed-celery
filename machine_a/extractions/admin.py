@@ -9,7 +9,7 @@ def start_search(modeladmin, request, queryset):
     row = queryset.first()
     row.status = 'RUNNING'
     row.save()
-    import ipdb; ipdb.set_trace()
+
     path = os.path.join(settings.MEDIA_ROOT, row.processes.name)
     run_tasks(row.collection, path, row.id)
     return path

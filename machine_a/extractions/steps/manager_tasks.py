@@ -31,6 +31,7 @@ def trat_num(processos):
 
 
 def run_tasks(collection, path, row_id):
+    import ipdb; ipdb.set_trace()
     processos = read_data(path)
     processos = trat_num(processos)
 
