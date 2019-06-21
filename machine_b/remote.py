@@ -10,9 +10,13 @@ from bots.piaui import ThemisconsultPi
 #     'tasks', backend='amqp',
 #     broker='amqp://172.16.103.250/6379')
 
+# app = Celery(
+#     'tasks', backend='amqp',
+#     broker='redis://localhost:6379/0')
+
 app = Celery(
     'tasks', backend='amqp',
-    broker='redis://localhost:6379')
+    broker='redis://192.168.18.15:6379')
 
 # app = Celery(
 #     'tasks', backend='amqp',
