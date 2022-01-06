@@ -1,7 +1,7 @@
 amqp==2.5.0
 backcall==0.1.0
 billiard==3.5.0.5
-celery==4.2.1
+celery==5.2.2
 decorator==4.4.0
 Django==2.2
 ipdb==0.12
